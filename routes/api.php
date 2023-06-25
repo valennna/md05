@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\Api\DeskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Бесполезная трата пространства
+// Route::get('/desks', [DeskController::class, 'index']); 
+// Route::get('/desks/{id}', [DeskController::class, 'show']);
+// Route::get('/desks', 'App\Http\Controllers\DeskController@index');
+
+
+Route::apiResources([
+    'desks' => DeskController::class
+]);
